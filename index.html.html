@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sujal Sanjay Redekar — Software Developer</title>
+<meta name="description" content="Portfolio of Sujal Sanjay Redekar, a Software Developer specializing in Java, Python, MERN Stack, DSA, and AI-powered systems." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *,
+  *::before,
+  *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-0: #06070b;
+    --bg-1: #0a0c13;
+    --bg-2: #10131c;
+    --glass: rgba(255, 255, 255, 0.045);
+    --glass-strong: rgba(255, 255, 255, 0.07);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-bright: rgba(255, 255, 255, 0.16);
+    --text: #e8ecf4;
+    --text-soft: #aeb6c8;
+    --text-dim: #6b7488;
+    --accent: #6366f1;
+    --accent-2: #22d3ee;
+    --accent-3: #f472b6;
+    --grad: linear-gradient(120deg, #6366f1 0%, #22d3ee 50%, #f472b6 100%);
+    --grad-soft: linear-gradient(120deg, rgba(99,102,241,0.18), rgba(34,211,238,0.14), rgba(244,114,182,0.12));
+    --radius: 20px;
+    --radius-sm: 14px;
+    --shadow: 0 20px 60px -20px rgba(0,0,0,0.7);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-0);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+  }
+
+  /* Animated background blobs */
+  .bg-fx {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background:
+      radial-gradient(1200px 800px at 80% -10%, rgba(99,102,241,0.16), transparent 60%),
+      radial-gradient(1000px 700px at -10% 30%, rgba(34,211,238,0.10), transparent 60%),
+      radial-gradient(900px 700px at 50% 110%, rgba(244,114,182,0.10), transparent 60%),
+      var(--bg-0);
+  }
+  .bg-fx .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    animation: float 18s ease-in-out infinite;
+  }
+  .bg-fx .b1 { width: 460px; height: 460px; background: #6366f1; top: -120px; right: -80px; }
+  .bg-fx .b2 { width: 380px; height: 380px; background: #22d3ee; bottom: 10%; left: -100px; animation-delay: -6s; }
+  .bg-fx .b3 { width: 320px; height: 320px; background: #f472b6; top: 45%; right: 20%; animation-delay: -12s; opacity: 0.22; }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(40px,-30px) scale(1.05); }
+    66% { transform: translate(-30px,20px) scale(0.97); }
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 8px 8px 22px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    box-shadow: var(--shadow);
+  }
+  nav .brand {
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 12px;
+  }
+  nav a {
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 100px;
+    transition: color 0.3s var(--ease), background 0.3s var(--ease);
+  }
+  nav a:hover { color: var(--text); background: var(--glass-strong); }
+  nav .nav-cta {
+    background: var(--grad);
+    color: #06070b;
+    font-weight: 600;
+    padding: 9px 18px;
+  }
+  nav .nav-cta:hover { color: #06070b; filter: brightness(1.08); }
+
+  /* Sections */
+  section { padding: 110px 0 60px; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    padding: 6px 14px;
+    border: 1px solid var(--border-bright);
+    border-radius: 100px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    margin-bottom: 22px;
+  }
+  .eyebrow .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent-2);
+    box-shadow: 0 0 12px var(--accent-2);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 60px;
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5.2rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin-bottom: 24px;
+  }
+  .hero h1 .grad {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shimmer 6s linear infinite;
+  }
+  @keyframes shimmer { to { background-position: 200% center; } }
+  .hero h1 .line { display: block; }
+  .hero .role {
+    font-size: 1.15rem;
+    color: var(--text-soft);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .hero .role .sep { color: var(--text-dim); margin: 0 10px; }
+  .hero p.bio {
+    font-size: 1.05rem;
+    color: var(--text-soft);
+    max-width: 640px;
+    margin-bottom: 38px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 26px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--grad);
+    color: #06070b;
+    box-shadow: 0 10px 30px -8px rgba(99,102,241,0.5);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -8px rgba(99,102,241,0.7); }
+  .btn-ghost {
+    background: var(--glass);
+    border-color: var(--border-bright);
+    color: var(--text);
+    backdrop-filter: blur(12px);
+  }
+  .btn-ghost:hover { transform: translateY(-3px); background: var(--glass-strong); border-color: rgba(255,255,255,0.28); }
+
+  /* Hero stat strip */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 620px;
+  }
+  .stat {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    backdrop-filter: blur(14px);
+    transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .stat:hover { border-color: var(--border-bright); transform: translateY(-4px); }
+  .stat .num {
+    font-size: 1.7rem;
+    font-weight: 800;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+  .stat .lbl { font-size: 0.82rem; color: var(--text-dim); margin-top: 6px; }
+
+  /* Section heading */
+  .sec-head { margin-bottom: 44px; }
+  .sec-head h2 {
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .sec-head h2 .grad {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .sec-head p { color: var(--text-soft); max-width: 540px; }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .skill-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px;
+    backdrop-filter: blur(16px) saturate(130%);
+    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--grad-soft);
+    opacity: 0;
+    transition: opacity 0.35s var(--ease);
+  }
+  .skill-card:hover { transform: translateY(-6px); border-color: var(--border-bright); }
+  .skill-card:hover::before { opacity: 1; }
+  .skill-card > * { position: relative; z-index: 1; }
+  .skill-card .ic {
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    border-radius: 12px;
+    background: var(--glass-strong);
+    border: 1px solid var(--border-bright);
+    margin-bottom: 16px;
+    font-size: 1.4rem;
+  }
+  .skill-card h3 { font-size: 1.12rem; font-weight: 700; margin-bottom: 8px; }
+  .skill-card p { font-size: 0.9rem; color: var(--text-soft); }
+  .skill-card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .skill-card .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+  }
+
+  /* Projects */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 20px;
+  }
+  .project {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    backdrop-filter: blur(16px) saturate(130%);
+    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+  .project::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: var(--grad);
+    opacity: 0;
+    transition: opacity 0.35s var(--ease);
+  }
+  .project:hover { transform: translateY(-6px); border-color: var(--border-bright); }
+  .project:hover::after { opacity: 1; }
+  .project .p-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
+  .project .p-emoji {
+    width: 46px; height: 46px;
+    display: grid; place-items: center;
+    border-radius: 12px;
+    background: var(--grad-soft);
+    border: 1px solid var(--border-bright);
+    font-size: 1.5rem;
+  }
+  .project .p-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: rgba(34,211,238,0.06);
+    white-space: nowrap;
+  }
+  .project h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .project p { font-size: 0.92rem; color: var(--text-soft); margin-bottom: 16px; }
+  .project .p-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+  .project .p-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    padding: 5px 11px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+  }
+  .project .p-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .project .p-meta { font-size: 0.82rem; color: var(--text-dim); }
+  .project .p-link {
+    color: var(--accent-2);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.25s var(--ease), color 0.25s var(--ease);
+  }
+  .project .p-link:hover { gap: 10px; color: #67e8f9; }
+
+  /* About */
+  .about-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    backdrop-filter: blur(16px) saturate(130%);
+  }
+  .about-card p { color: var(--text-soft); font-size: 1.02rem; margin-bottom: 16px; }
+  .about-card p:last-child { margin-bottom: 0; }
+  .about-card .hl { color: var(--text); font-weight: 600; }
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
+  .about-side {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px;
+    backdrop-filter: blur(16px);
+  }
+  .about-side h3 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+  .about-side ul { list-style: none; }
+  .about-side li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    font-size: 0.92rem;
+    color: var(--text-soft);
+    border-bottom: 1px dashed var(--border);
+  }
+  .about-side li:last-child { border-bottom: none; }
+  .about-side li .b { color: var(--accent-2); }
+
+  /* Contact */
+  .contact {
+    text-align: center;
+    padding: 110px 0 90px;
+  }
+  .contact .eyebrow { margin-bottom: 22px; }
+  .contact h2 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+  .contact h2 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .contact p { color: var(--text-soft); max-width: 480px; margin: 0 auto 34px; font-size: 1.05rem; }
+  .contact-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 34px 0;
+    text-align: center;
+  }
+  footer .f-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  footer .f-brand { font-weight: 700; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  footer .f-copy { color: var(--text-dim); font-size: 0.86rem; }
+  footer .f-links { display: flex; gap: 18px; }
+  footer .f-links a { color: var(--text-soft); text-decoration: none; font-size: 0.88rem; transition: color 0.25s var(--ease); }
+  footer .f-links a:hover { color: var(--text); }
+
+  /* Reveal animation */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg-0); }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 100px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+  ::selection { background: rgba(99,102,241,0.4); color: #fff; }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; }
+    nav a:not(.nav-cta) { display: none; }
+    nav { padding-left: 18px; }
+  }
+  @media (max-width: 600px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .wrap { padding: 0 18px; }
+    section { padding: 90px 0 40px; }
+    .about-card, .project, .skill-card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg-fx">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <nav>
+    <span class="brand">SR.</span>
+    <a href="#home">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Let's talk</a>
+  </nav>
+
+  <div class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="eyebrow reveal"><span class="dot"></span> Available for opportunities</div>
+      <h1 class="reveal">
+        <span class="line">Hi, I'm Sujal —</span>
+        <span class="line grad">building tech that ships.</span>
+      </h1>
+      <div class="role reveal">Software Developer<span class="sep">·</span>Full-Stack & AI</div>
+      <p class="bio reveal">
+        B.Tech Computer Science Engineering student (CGPA 8.47) with strong expertise in Java, Python,
+        the MERN Stack, and DSA. I build full-stack web applications and AI-powered systems — from an
+        Airbnb-inspired platform to a deepfake detection system using deep learning. Driven by
+        problem-solving and a passion for technology that creates real-world impact.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#projects" class="btn btn-primary">View my work →</a>
+        <a href="https://www.linkedin.com/in/sujal-redekar-3420b635b/" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="num">8.47</div>
+          <div class="lbl">CGPA · B.Tech CSE</div>
+        </div>
+        <div class="stat">
+          <div class="num">2</div>
+          <div class="lbl">AICTE Internships (Google)</div>
+        </div>
+        <div class="stat">
+          <div class="num">End-to-End</div>
+          <div class="lbl">From idea to deployment</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="sec-head reveal">
+        <div class="eyebrow"><span class="dot"></span> Toolkit</div>
+        <h2>What I <span class="grad">work with</span></h2>
+        <p>A versatile stack spanning backend systems, full-stack web development, data structures, and applied AI.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="ic">☕</div>
+          <h3>Java</h3>
+          <p>Strong core in OOP, collections, multithreading, and building robust backend systems.</p>
+          <div class="tags"><span class="tag">OOP</span><span class="tag">Collections</span><span class="tag">JDBC</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="ic">🐍</div>
+          <h3>Python</h3>
+          <p>Scripting, automation, and AI/ML pipelines using NumPy, Pandas, and deep learning frameworks.</p>
+          <div class="tags"><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">TensorFlow</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="ic">⚛️</div>
+          <h3>MERN Stack</h3>
+          <p>End-to-end web apps with MongoDB, Express, React, and Node — from REST APIs to responsive UIs.</p>
+          <div class="tags"><span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">Node</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="ic">🧠</div>
+          <h3>DSA</h3>
+          <p>Solid problem-solving foundation in algorithms, data structures, and competitive programming.</p>
+          <div class="tags"><span class="tag">Algorithms</span><span class="tag">Graphs</span><span class="tag">DP</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="ic">🤖</div>
+          <h3>AI / Deep Learning</h3>
+          <p>Building ML-powered systems including deepfake detection and computer vision models.</p>
+          <div class="tags"><span class="tag">CNNs</span><span class="tag">OpenCV</span><span class="tag">Keras</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="ic">🔧</div>
+          <h3>Tools & DevOps</h3>
+          <p>Version control, databases, deployment, and modern development workflows.</p>
+          <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Postman</span><span class="tag">Docker</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="sec-head reveal">
+        <div class="eyebrow"><span class="dot"></span> Selected work</div>
+        <h2>My <span class="grad">Projects</span></h2>
+        <p>End-to-end builds — from full-stack marketplaces to deep-learning detection systems.</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project reveal">
+          <div class="p-head">
+            <div class="p-emoji">🏠</div>
+            <span class="p-type">Full-Stack Web</span>
+          </div>
+          <h3>Airbnb-Inspired Platform</h3>
+          <p>A full-stack property rental marketplace with listing creation, search and filtering, user authentication, bookings, and a responsive UI inspired by Airbnb's experience.</p>
+          <div class="p-tags">
+            <span class="p-tag">MongoDB</span>
+            <span class="p-tag">Express</span>
+            <span class="p-tag">React</span>
+            <span class="p-tag">Node</span>
+          </div>
+          <div class="p-foot">
+            <span class="p-meta">MERN · REST API</span>
+            <a href="https://www.linkedin.com/in/sujal-redekar-3420b635b/" target="_blank" rel="noopener" class="p-link">Details →</a>
+          </div>
+        </div>
+
+        <div class="project reveal">
+          <div class="p-head">
+            <div class="p-emoji">🛡️</div>
+            <span class="p-type">AI / Deep Learning</span>
+          </div>
+          <h3>Deepfake Detection System</h3>
+          <p>A deep-learning system that detects manipulated media using CNN-based feature extraction. Trained on real vs. fake datasets to classify AI-generated faces with high accuracy.</p>
+          <div class="p-tags">
+            <span class="p-tag">Python</span>
+            <span class="p-tag">TensorFlow</span>
+            <span class="p-tag">CNN</span>
+            <span class="p-tag">OpenCV</span>
+          </div>
+          <div class="p-foot">
+            <span class="p-meta">Deep Learning · CV</span>
+            <a href="https://www.linkedin.com/in/sujal-redekar-3420b635b/" target="_blank" rel="noopener" class="p-link">Details →</a>
+          </div>
+        </div>
+
+        <div class="project reveal">
+          <div class="p-head">
+            <div class="p-emoji">⚙️</div>
+            <span class="p-type">Backend / DSA</span>
+          </div>
+          <h3>Algorithm & Systems Work</h3>
+          <p>Engineering foundations in data structures, algorithms, and scalable backend design — applied across competitive programming and production-grade application logic.</p>
+          <div class="p-tags">
+            <span class="p-tag">Java</span>
+            <span class="p-tag">DSA</span>
+            <span class="p-tag">Python</span>
+            <span class="p-tag">DBMS</span>
+          </div>
+          <div class="p-foot">
+            <span class="p-meta">Core Engineering</span>
+            <a href="https://www.linkedin.com/in/sujal-redekar-3420b635b/" target="_blank" rel="noopener" class="p-link">Details →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="sec-head reveal">
+        <div class="eyebrow"><span class="dot"></span> About</div>
+        <h2>A bit <span class="grad">about me</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <p>
+            I'm a motivated <span class="hl">B.Tech Computer Science Engineering</span> student with a CGPA of
+            <span class="hl">8.47</span>, focused on building real, working software — not just passing exams.
+          </p>
+          <p>
+            My expertise spans <span class="hl">Java, Python, the MERN Stack, and DSA</span>, and I've shipped
+            full-stack web applications alongside AI-powered systems. Two <span class="hl">AICTE-recognized
+            virtual internships</span>, supported by <span class="hl">Google</span>, gave me structured exposure
+            to industry workflows and modern engineering practices.
+          </p>
+          <p>
+            I take pride in delivering end-to-end — from an Airbnb-inspired rental platform to a deepfake
+            detection system using deep learning. I'm driven by problem-solving and a genuine passion for
+            building technology that creates real-world impact.
+          </p>
+        </div>
+        <div class="about-side reveal">
+          <h3>Quick facts</h3>
+          <ul>
+            <li><span class="b">▸</span> B.Tech CSE · CGPA 8.47</li>
+            <li><span class="b">▸</span> 2× AICTE internships (Google)</li>
+            <li><span class="b">▸</span> Java · Python · MERN</li>
+            <li><span class="b">▸</span> DSA & problem-solving</li>
+            <li><span class="b">▸</span> AI / Deep Learning</li>
+            <li><span class="b">▸</span> Full-stack web apps</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="eyebrow reveal"><span class="dot"></span> Get in touch</div>
+      <h2 class="reveal">Let's build something <span class="grad">that matters.</span></h2>
+      <p class="reveal">Open to internships, collaborations, and full-time opportunities. The fastest way to reach me is LinkedIn.</p>
+      <div class="contact-actions reveal">
+        <a href="https://www.linkedin.com/in/sujal-redekar-3420b635b/" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          Connect on LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap f-inner">
+        <span class="f-brand">Sujal Redekar</span>
+        <span class="f-copy">© 2026 · Designed & built with care.</span>
+        <div class="f-links">
+          <a href="#home">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="https://www.linkedin.com/in/sujal-redekar-3420b635b/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  // Stagger reveals inside each section
+  document.querySelectorAll('section').forEach((sec) => {
+    const items = sec.querySelectorAll('.reveal');
+    items.forEach((el, i) => { el.style.transitionDelay = (i * 90) + 'ms'; });
+  });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
